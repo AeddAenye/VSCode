@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+section.shop{
+    display: none;
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+section.shop.active{
+    display: block;
+}
+
+section.shop.actions{
+    display: block;
+    position: fixed;
+}
+
+section.shop .background{
+    background-color: rgba(0, 0, 0, 0.651);
+    width: 100svw;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.shop .window{
+    background-color: white;
+    width: 90vw;
+    height: 80vh;
+    border-radius: 10px;
+    padding: 10px;
+
+    overflow: auto;
+}
+
+section.shop .nav{
+    position: absolute;
+}
+
+section.shop .nav .close-modal-button{
+    background-color: rgba(255, 0, 0, 0.422);
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+section.shop img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+section.shop section.actions{
+    padding: 30px;
+}
+
+section.shop .card{
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+
+    height: 200px;
+}
+
+section.shop .card .pic{
+    width: 20%;
+    height: 200px;
+}
+
+section.shop .card .specs{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+
+}
+
+section.shop .specs .name{
+    padding-bottom: 20px;
+}
+
+section.shop .specs .description{
+    overflow: scroll;
+}

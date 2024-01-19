@@ -30,6 +30,12 @@ class Enemy {
     }
 }
 
+function windclose(elem, close_this){
+    document.querySelector(elem).addEventListener('click', function(){
+        document.querySelector(close_this).classList.remove('active')
+    })
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     fetch('./enemies.json').then(response => response.json())
         .then(json => {
@@ -53,5 +59,20 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         })
 
+
+        document.querySelector('.shop-button').addEventListener('click', function(){
+            let modwind = document.querySelector('section.shop')
+
+            if(modwind.classList.contains('active')){
+                modwind.classList.remove('active')
+            }
+
+            else{
+                modwind.classList.add('active')
+            }
+        })
+
+        windclose('section.shop .background', 'section.shop')
+        windclose('section.shop .close-modal-button', 'section.shop')
 })
 
