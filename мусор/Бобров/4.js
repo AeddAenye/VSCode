@@ -1,1 +1,0 @@
-console.log([1, 2, 3, 4].every(num => num%2 === 0));
