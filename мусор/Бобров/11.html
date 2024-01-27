@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <button type="button">Уничтожить квадрат</button>
+
+    <script>
+        let div = document.querySelector('div')
+        let button = document.querySelector('button')
+
+        button.addEventListener('click', function () {
+            if(div.style.display == 'none'){
+                div.style.display = 'block'
+                button.innerText = "Уничтожить квадрат"
+            }
+            
+            else{
+                div.style.display = 'none'
+                button.innerText = "Реснуть квадрат"
+            }
+        })
+
+        unlock.addEventListener('click', function () {
+            input.disabled = false
+        })
+    </script>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            border-radius: 20px;
+            margin: 100px;
+        }
+
+        button{
+            position: fixed;
+            width: 200px;
+            height: 50px;
+            font-size: 1.2rem;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <div class="cube" :style="{ display: display }"></div>
+        <button type="button" ref="btn" @click="updatecube()">Убить квадрат</button>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    display: 'block',
+                }
+            },
+
+            methods: {
+                updatecube() {
+                    const btn = this.$refs.btn; // Обращаемся к ref внутри метода
+                    if (this.display == 'block') {
+                        btn.innerText = "Реснуть квадрат"
+                        this.display = 'none'
+                    } else {
+                        btn.innerText = "Убить квадрат"
+                        this.display = 'block'
+                    }
+                }
+            },
+
+        }).mount('#app')
+    </script>
+
+    <style>
+        #app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            border-radius: 20px;
+            margin: 100px;
+        }
+
+        button {
+            position: fixed;
+            width: 200px;
+            height: 50px;
+            font-size: 1.2rem;
+        }
+    </style>
+</body>
+
+</html>
