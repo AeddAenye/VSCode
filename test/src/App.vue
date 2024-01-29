@@ -1,5 +1,6 @@
 <script setup>
 import CreateTask from './components/CreateTask.vue'
+import Task from './components/Task.vue';
 </script>
 
 <template>
@@ -7,7 +8,7 @@ import CreateTask from './components/CreateTask.vue'
       <CreateTask />
   </header>
   <body>
-    
+    <Task />
   </body>
 
   <main>

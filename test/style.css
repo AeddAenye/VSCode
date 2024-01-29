@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+header, body{
+    padding: 0px 50px;
+}
+
 :root {
     --block-bg: rgba(0, 0, 0, 0.162);
 }
@@ -10,6 +14,7 @@
 .task {
     margin: 20px 50px;
     display: flex;
+    justify-content: space-between;
     background-color: var(--block-bg);
     border-radius: 15px;
     padding: 20px;
@@ -20,7 +25,8 @@
 
 .task .text {
     margin: 0px 20px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     height: 100px;
 }
 
