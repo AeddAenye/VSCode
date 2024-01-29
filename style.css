@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --block-bg: rgba(0, 0, 0, 0.162);
+}
+
+.task {
+    margin: 20px 50px;
+    display: flex;
+    background-color: var(--block-bg);
+    border-radius: 15px;
+    padding: 20px;
+    height: 100px;
+
+    align-items: center;
+}
+
+.task .text {
+    margin: 0px 20px;
+    overflow: scroll;
+    height: 100px;
+}
+
+.task .text span {
+    font-size: 1.3rem;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+}
+
+button.delete {
+    background-color: rgb(245, 94, 94);
+}
+
+button.addtask {
+    background-color: rgb(126, 187, 240);
+}
+
+button img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    width: 40px;
+    height: 40px;
+}
+
+.task button.delete:hover {
+    background-color: rgb(240, 55, 55);
+}
+
+.task button.delete:active {
+    scale: 0.95;
+}
+
+.inputarea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 50px;
+    padding: 20px;
+    background-color: var(--block-bg);
+    border-radius: 15px;
+}
+
+.inputarea .userinput {
+    width: 90%;
+    padding: 0px 20px;
+}
+
+.inputarea input {
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.inputarea button {
+    width: 50px;
+    height: 50px;
+}
