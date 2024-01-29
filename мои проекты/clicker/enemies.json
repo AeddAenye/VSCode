@@ -1,0 +1,22 @@
+{
+    "enemies": [
+        {
+            "name": "Гоблин",
+            "hp": 10,
+            "img": "./imgs/goblin.png",
+            "drop_money": 3
+        },
+        {
+            "name": "Крыса",
+            "hp": 5,
+            "img": "./imgs/rat.png",
+            "drop_money": 1
+        },
+        {
+            "name": "Сирена",
+            "hp": 20,
+            "img": "./imgs/sirena.png",
+            "drop_money": 5
+        }
+    ]
+}
