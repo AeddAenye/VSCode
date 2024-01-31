@@ -3,6 +3,9 @@
     <div class="text">
       <span>{{ text }}</span>
     </div>
+    <div class="tag">
+      <span>{{ tag }}</span>
+    </div>
     <div>
       <button class="delete" type="button" @click="deletetask()">
         <img src="../assets/x.svg" draggable="false" />
@@ -18,7 +21,13 @@ export default {
       type: String,
       required: true,
     },
+
+    tag: {
+      type: String,
+      required: true,
+    },
   },
+
   methods: {
     deletetask() {
       this.$emit("deltask")

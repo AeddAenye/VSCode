@@ -1,7 +1,11 @@
 <template>
   <div class="inputarea">
-    <div class="userinput">
-      <input type="text" placeholder="Нужно просто начать" v-model="tasktxt" />
+    <div class="usertext">
+      <input type="text" placeholder="Нужно просто начать" v-model="txt" />
+    </div>
+
+    <div class="tag">
+      <input type="text" placeholder="Добавь тэг" v-model="tag" />
     </div>
     <div>
       <button type="button" class="addtask" @click="taskcreate">
@@ -15,14 +19,20 @@
 export default {
   data() {
     return {
-      tasktxt: "",
+      txt: '',
+      tag: '',
     };
   },
   methods: {
     taskcreate() {
-      if (this.tasktxt.trim() !== "") {
-        this.$emit("add-task", { text: this.tasktxt });
-        this.tasktxt = "";
+      if (this.txt.trim() !== '') {
+        if (this.tag.trim() === '') {
+          this.tag = 'Без тэга'
+        }
+        this.$emit('addtask', { text: this.txt, tag: this.tag })
+
+        this.txt = '';
+        this.tag = ''
       }
     },
   },
@@ -31,37 +41,38 @@ export default {
 
 <style scoped>
 .inputarea {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px 50px;
-    padding: 20px;
-    background-color: var(--block-bg);
-    border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 20px 50px;
+  padding: 20px;
+  background-color: var(--block-bg);
+  border-radius: 15px;
 }
 
 .inputarea .userinput {
-    width: 90%;
-    padding: 0px 20px;
+  padding: 0px 20px;
 }
+
+.tag {}
 
 .inputarea input {
-    width: 100%;
-    font-size: 1.5rem;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
 }
 
-.inputarea button.addtask  {
-    background-color: rgb(126, 187, 240);
+.inputarea button.addtask {
+  background-color: rgb(126, 187, 240);
 }
 
 .inputarea button:hover {
-    background-color: rgb(88, 170, 242);
+  background-color: rgb(88, 170, 242);
 }
 
 .inputarea button:active {
-    scale: 0.95;
+  scale: 0.95;
 }
 </style>
