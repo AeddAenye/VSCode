@@ -4,7 +4,7 @@
       <span>{{ text }}</span>
     </div>
     <div>
-      <button class="delete" type="button">
+      <button class="delete" type="button" @click="deletetask()">
         <img src="../assets/x.svg" draggable="false" />
       </button>
     </div>
@@ -19,5 +19,10 @@ export default {
       required: true,
     },
   },
+  methods: {
+    deletetask(){
+      this.$emit("deltask")
+    }
+  }
 };
 </script>
