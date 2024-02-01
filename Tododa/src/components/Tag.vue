@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>#</span><span>{{ tag }}</span>
+        # {{ tag }}
     </div>
 </template>
   
@@ -16,17 +16,11 @@ export default {
 </script>
 
 <style scoped>
-span{
-    font-size: 1.3rem;
-    color: black;
-}
-
 div{
     display: flex;
     flex-wrap: wrap;
-    width: fit-content;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.162);
+    margin: 0px 20px;
 }
 </style>

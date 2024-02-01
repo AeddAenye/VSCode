@@ -52,7 +52,7 @@ export default {
 
 .inputarea .usertext {
   padding: 0px 20px;
-  width: 60%;
+  width: 65%;
 }
 
 .inputarea .tag{
@@ -66,6 +66,8 @@ export default {
   border-radius: 10px;
   border: none;
 }
+
+
 
 .inputarea button.addtask {
   background-color: rgb(126, 187, 240);

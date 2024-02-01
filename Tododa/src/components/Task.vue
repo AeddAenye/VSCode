@@ -4,9 +4,12 @@
       <span>{{ text }}</span>
     </div>
     <div class="tag">
-      <span>{{ tag }}</span>
+      <span># {{ tag }}</span>
     </div>
-    <div>
+    <div class="buttons">
+      <button class="check" type="button">
+        <img src="../assets/check.svg" draggable="false">
+      </button>
       <button class="delete" type="button" @click="deletetask()">
         <img src="../assets/x.svg" draggable="false" />
       </button>
@@ -25,12 +28,23 @@ export default {
     tag: {
       type: String,
       required: true,
+      default: 'Без тэга',
     },
+
+    complete: {
+      type: Boolean,
+      required: true,
+      default: true,
+    }
   },
 
   methods: {
     deletetask() {
       this.$emit("deltask")
+    },
+
+    checktask(){
+      this.$emit('checktask')
     }
   }
 };
@@ -48,9 +62,9 @@ export default {
 }
 
 .task .text {
-  width: 80%;
   margin: 0px 20px;
   text-wrap: wrap;
+  width: 70%;
 }
 
 .text span{
@@ -58,12 +72,30 @@ export default {
 }
 
 .task .tag{
-  color: rgb(103, 102, 102);
+  color: rgba(0, 0, 0, 0.318);
   margin: 0px 20px;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons{
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+  margin: 0px 10px;
 }
 
 button.delete {
   background-color: rgb(245, 94, 94);
+}
+
+button.check {
+  background-color: rgb(72, 234, 124);
 }
 
 .task button.delete:hover {
