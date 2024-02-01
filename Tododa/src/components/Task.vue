@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .task {
-  margin: 20px 50px;
+  margin: 20px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +48,17 @@ export default {
 }
 
 .task .text {
-  width: calc(100% - 60px);
+  width: 80%;
+  margin: 0px 20px;
+  text-wrap: wrap;
+}
+
+.text span{
+  width: fit-content;
+}
+
+.task .tag{
+  color: rgb(103, 102, 102);
   margin: 0px 20px;
 }
 

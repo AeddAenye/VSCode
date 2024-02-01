@@ -5,7 +5,7 @@
     </div>
 
     <div class="tag">
-      <input type="text" placeholder="Добавь тэг" v-model="tag" />
+      <input type="text" placeholder="Добавьте тэг" v-model="tag" />
     </div>
     <div>
       <button type="button" class="addtask" @click="taskcreate">
@@ -43,23 +43,26 @@ export default {
 .inputarea {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  margin: 20px 50px;
+  justify-content: space-between;
+  margin: 20px 0px;
   padding: 20px;
   background-color: var(--block-bg);
   border-radius: 15px;
 }
 
-.inputarea .userinput {
+.inputarea .usertext {
   padding: 0px 20px;
+  width: 60%;
 }
 
-.tag {}
+.inputarea .tag{
+  width: 20%;
+}
 
 .inputarea input {
   width: 100%;
   font-size: 1.5rem;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
   border: none;
 }
