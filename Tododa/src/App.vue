@@ -19,15 +19,34 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import CreateTask from './components/CreateTask.vue';
 import Task from './components/Task.vue';
 import Tag from './components/Tag.vue';
 
 let tasks = ref([]);
 let tags = ref([]);
-let doned = ref()
-doned = 0
+let doned = ref(0);
+
+onMounted(() => {
+  const stasks = localStorage.getItem('tasks');
+  const stags = localStorage.getItem('tags');
+
+  if (stasks) {
+    tasks.value = JSON.parse(stasks);
+  }
+
+  if (stags) {
+    tags.value = JSON.parse(stags);
+  }
+
+  doned.value = tasks.value.filter(task => task.done).length;
+});
+
+const SaveData = () => {
+  localStorage.setItem('tasks', JSON.stringify(tasks.value));
+  localStorage.setItem('tags', JSON.stringify(tags.value));
+};
 
 const AddTask = (newtask) => {
   tasks.value.push({ text: newtask.text, tag: newtask.tag, done: newtask.done });
@@ -35,14 +54,15 @@ const AddTask = (newtask) => {
   if (!tags.value.find(t => t.tag === newtask.tag)) {
     tags.value.push({ tag: newtask.tag, color: ChangeColor() });
   }
+  doned.value += newtask.done ? 1 : 0;
+  SaveData();
 };
 
 const DoneTask = (i) => {
-  tasks.value[i].done = !tasks.value[i].done
-  tasks.value[i].done ? doned += 1 : doned-=1
-
-}
-
+  tasks.value[i].done = !tasks.value[i].done;
+  doned.value += tasks.value[i].done ? 1 : -1;
+  SaveData();
+};
 
 const DelTask = (i) => {
   const deletedtask = tasks.value.splice(i, 1)[0];
@@ -51,12 +71,18 @@ const DelTask = (i) => {
   if (tagindex !== -1 && !tasks.value.some(task => task.tag === deletedtask.tag)) {
     tags.value.splice(tagindex, 1);
   }
+  doned.value -= deletedtask.done ? 1 : 0;
+  SaveData();
 };
 
 const ChangeColor = () => {
   const randomColor = () => Math.floor(Math.random() * 256);
   return `rgba(${randomColor()}, ${randomColor()}, ${randomColor()}, ${0.5})`;
 };
+
+onUnmounted(() => {
+  SaveData();
+});
 </script>
 
 <style scoped>
