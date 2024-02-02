@@ -29,15 +29,15 @@ let tags = ref([]);
 let doned = ref(0);
 
 onMounted(() => {
-  const stasks = localStorage.getItem('tasks');
-  const stags = localStorage.getItem('tags');
+  const localtasks = localStorage.getItem('tasks');
+  const localtags = localStorage.getItem('tags');
 
-  if (stasks) {
-    tasks.value = JSON.parse(stasks);
+  if (localtasks) {
+    tasks.value = JSON.parse(localtasks);
   }
 
-  if (stags) {
-    tags.value = JSON.parse(stags);
+  if (localtags) {
+    tags.value = JSON.parse(localtags);
   }
 
   doned.value = tasks.value.filter(task => task.done).length;
@@ -99,10 +99,14 @@ onUnmounted(() => {
 }
 
 .counter{
-  position: absolute;
+  position: fixed;
   top: 5px;
   left: 5px;
   color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 980px) {
+  
 }
 </style>
 

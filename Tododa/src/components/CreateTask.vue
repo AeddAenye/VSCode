@@ -1,13 +1,15 @@
 <template>
   <div class="inputarea">
-    <div class="text">
-      <input type="text" placeholder="Нужно просто начать" v-model="txt" />
-    </div>
+    <div class="fields">
+      <div class="text">
+        <input type="text" placeholder="Нужно просто начать" v-model="txt" />
+      </div>
 
-    <div class="tag">
-      <input type="text" placeholder="Добавьте тэг" v-model="tag" />
+      <div class="tag">
+        <input type="text" placeholder="Добавьте тэг" v-model="tag" />
+      </div>
     </div>
-    <div>
+    <div class="buttons">
       <button type="button" @click="taskcreate">
         <img src="../assets/plus.svg" draggable="false" />
       </button>
@@ -54,19 +56,42 @@ export default {
 }
 
 .text {
-  width: 55%;
+  width: 70%;
 }
 
 .tag {
-  width: 25%;
+  width: 30%;
+}
+
+.fields {
+  width: 95%;
+}
+
+.buttons {
+  width: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 .inputarea input {
-  width: 100%;
+  width: 95%;
   font-size: 1.5rem;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 10px;
   border: none;
+}
+
+.fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0px 20px;
+}
+
+.fields div{
+  margin: 0px 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .inputarea button {
