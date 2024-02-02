@@ -8,7 +8,7 @@
     </div>
 
     <div v-for="(t, i) in tasks" :key="i">
-      <Task :text="t.text" :tag="t.tag" @deltask="deletetask(i)" />
+      <Task :text="t.text" :tag="t.tag" @deltask="deletetask(i)" @checktask="checktask(i)"/>
     </div>
   </div>
 </template>
@@ -29,6 +29,10 @@ const addtask = (ntask) => {
     tags.value.push({ tag: ntask.tag, color: changecolor() });
   }
 };
+
+const checktask = (i) => {
+  
+}
 
 const deletetask = (i) => {
   const deletedtask = tasks.value.splice(i, 1)[0];

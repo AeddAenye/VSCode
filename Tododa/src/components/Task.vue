@@ -7,9 +7,6 @@
       <span># {{ tag }}</span>
     </div>
     <div class="buttons">
-      <button class="check" type="button">
-        <img src="../assets/check.svg" draggable="false">
-      </button>
       <button class="delete" type="button" @click="deletetask()">
         <img src="../assets/x.svg" draggable="false" />
       </button>
@@ -64,7 +61,7 @@ export default {
 .task .text {
   margin: 0px 20px;
   text-wrap: wrap;
-  width: 70%;
+  width: 80%;
 }
 
 .text span{
@@ -80,10 +77,10 @@ export default {
 }
 
 .buttons{
-  width: 20%;
+  width: 10%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 button{
@@ -91,11 +88,7 @@ button{
 }
 
 button.delete {
-  background-color: rgb(245, 94, 94);
-}
-
-button.check {
-  background-color: rgb(72, 234, 124);
+  background-color: rgb(255, 143, 143);
 }
 
 .task button.delete:hover {

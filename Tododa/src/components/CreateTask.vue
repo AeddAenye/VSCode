@@ -7,7 +7,7 @@
     <div class="tag">
       <input type="text" placeholder="Добавьте тэг" v-model="tag" />
     </div>
-    <div>
+    <div class="buttons">
       <button type="button" class="addtask" @click="taskcreate">
         <img src="../assets/plus.svg" draggable="false" />
       </button>
@@ -50,14 +50,14 @@ export default {
   border-radius: 15px;
 }
 
-.inputarea .usertext {
-  padding: 0px 20px;
-  width: 65%;
+.usertext{
+  width: 55%;
 }
 
-.inputarea .tag{
-  width: 20%;
+.tag{
+  width: 25%;
 }
+
 
 .inputarea input {
   width: 100%;
@@ -67,9 +67,7 @@ export default {
   border: none;
 }
 
-
-
-.inputarea button.addtask {
+.inputarea button {
   background-color: rgb(126, 187, 240);
 }
 
