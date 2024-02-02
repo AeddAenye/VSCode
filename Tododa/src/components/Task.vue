@@ -82,6 +82,7 @@ div{
   width: 20%;
   display: flex;
   justify-content: center;
+  text-wrap: nowrap;
 }
 
 .buttons {

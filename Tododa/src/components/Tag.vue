@@ -18,9 +18,10 @@ export default {
 <style scoped>
 div{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     padding: 10px;
     border-radius: 10px;
-    margin: 0px 20px;
+    margin: 10px 20px;
+    text-wrap: nowrap;
 }
 </style>
