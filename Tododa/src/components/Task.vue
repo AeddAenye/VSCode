@@ -69,7 +69,7 @@ div{
 .task .text {
   margin: 0px 20px;
   text-wrap: wrap;
-  width: 80%;
+  width: 70%;
 }
 
 .text span {
@@ -79,7 +79,7 @@ div{
 .task .tag {
   color: rgba(0, 0, 0, 0.318);
   margin: 0px 20px;
-  width: 10%;
+  width: 20%;
   display: flex;
   justify-content: center;
 }

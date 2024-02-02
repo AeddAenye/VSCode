@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="counter">
+      <span>{{ doned }} / {{ tasks.length }}</span>
+    </div>
     <div>
       <CreateTask @addtask="AddTask" />
     </div>
@@ -23,6 +26,8 @@ import Tag from './components/Tag.vue';
 
 let tasks = ref([]);
 let tags = ref([]);
+let doned = ref()
+doned = 0
 
 const AddTask = (newtask) => {
   tasks.value.push({ text: newtask.text, tag: newtask.tag, done: newtask.done });
@@ -34,6 +39,8 @@ const AddTask = (newtask) => {
 
 const DoneTask = (i) => {
   tasks.value[i].done = !tasks.value[i].done
+  tasks.value[i].done ? doned += 1 : doned-=1
+
 }
 
 
@@ -63,5 +70,12 @@ const ChangeColor = () => {
 .done {
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.counter{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>
