@@ -1,13 +1,13 @@
 <template>
-  <div class="task">
-    <div class="text">
+  <div class="task" :style="{ opacity: this.done ? 0.3 : 1}" >
+    <div class="text" :style="{textDecoration: this.done ? 'line-through' : 'none' }" @click="donetask">
       <span>{{ text }}</span>
     </div>
     <div class="tag">
       <span># {{ tag }}</span>
     </div>
     <div class="buttons">
-      <button class="delete" type="button" @click="deletetask()">
+      <button class="delete" type="button" @click="deletetask">
         <img src="../assets/x.svg" draggable="false" />
       </button>
     </div>
@@ -25,25 +25,23 @@ export default {
     tag: {
       type: String,
       required: true,
-      default: 'Без тэга',
     },
 
-    complete: {
+    done: {
       type: Boolean,
-      required: true,
-      default: true,
-    }
+      default: false,
+    },
   },
 
   methods: {
     deletetask() {
-      this.$emit("deltask")
+      this.$emit("deltask");
     },
 
-    checktask(){
-      this.$emit('checktask')
+    donetask(){
+      this.$emit("donetask");
     }
-  }
+  },
 };
 </script>
 
@@ -56,6 +54,16 @@ export default {
   background-color: var(--block-bg);
   border-radius: 15px;
   padding: 20px;
+  cursor: pointer;
+}
+
+.task.done {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+div{
+  transition: all 0.2s ease;
 }
 
 .task .text {
@@ -64,11 +72,11 @@ export default {
   width: 80%;
 }
 
-.text span{
+.text span {
   width: fit-content;
 }
 
-.task .tag{
+.task .tag {
   color: rgba(0, 0, 0, 0.318);
   margin: 0px 20px;
   width: 10%;
@@ -76,14 +84,14 @@ export default {
   justify-content: center;
 }
 
-.buttons{
+.buttons {
   width: 10%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-button{
+button {
   margin: 0px 10px;
 }
 

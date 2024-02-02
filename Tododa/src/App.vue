@@ -1,14 +1,16 @@
 <template>
   <div>
     <div>
-      <CreateTask @addtask="addtask" />
+      <CreateTask @addtask="AddTask" />
     </div>
     <div class="wrapper">
-        <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag" />
+      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag" />
     </div>
 
-    <div class="taskdiv" v-for="(t, i) in tasks" :key="i">
-      <Task :text="t.text" :tag="t.tag" @deltask="deletetask(i)" @checktask="checktask(i)"/>
+    <div v-for="(task, i) in tasks" :key="i">
+      <Task :text="task.text" :tag="task.tag" :done="task.done"
+        @deltask="DelTask(i)" @donetask="DoneTask(i)" />
+
     </div>
   </div>
 </template>
@@ -22,19 +24,20 @@ import Tag from './components/Tag.vue';
 let tasks = ref([]);
 let tags = ref([]);
 
-const addtask = (ntask) => {
-  tasks.value.push({ text: ntask.text, tag: ntask.tag, done: false });
+const AddTask = (newtask) => {
+  tasks.value.push({ text: newtask.text, tag: newtask.tag, done: newtask.done });
 
-  if (!tags.value.find(tag => tag.tag === ntask.tag)) {
-    tags.value.push({ tag: ntask.tag, color: changecolor() });
+  if (!tags.value.find(t => t.tag === newtask.tag)) {
+    tags.value.push({ tag: newtask.tag, color: ChangeColor() });
   }
 };
 
-const checktask = (i) => {
-  
+const DoneTask = (i) => {
+  tasks.value[i].done = !tasks.value[i].done
 }
 
-const deletetask = (i) => {
+
+const DelTask = (i) => {
   const deletedtask = tasks.value.splice(i, 1)[0];
   const tagindex = tags.value.findIndex(tag => tag.tag === deletedtask.tag);
 
@@ -43,7 +46,7 @@ const deletetask = (i) => {
   }
 };
 
-const changecolor = () => {
+const ChangeColor = () => {
   const randomColor = () => Math.floor(Math.random() * 256);
   return `rgba(${randomColor()}, ${randomColor()}, ${randomColor()}, ${0.5})`;
 };
@@ -57,4 +60,8 @@ const changecolor = () => {
   margin: 50px;
 }
 
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
 </style>

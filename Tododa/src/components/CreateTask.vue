@@ -1,14 +1,14 @@
 <template>
   <div class="inputarea">
-    <div class="usertext">
+    <div class="text">
       <input type="text" placeholder="Нужно просто начать" v-model="txt" />
     </div>
 
     <div class="tag">
       <input type="text" placeholder="Добавьте тэг" v-model="tag" />
     </div>
-    <div class="buttons">
-      <button type="button" class="addtask" @click="taskcreate">
+    <div>
+      <button type="button" @click="taskcreate">
         <img src="../assets/plus.svg" draggable="false" />
       </button>
     </div>
@@ -21,17 +21,20 @@ export default {
     return {
       txt: '',
       tag: '',
-    };
+    }
   },
+
   methods: {
     taskcreate() {
-      if (this.txt.trim() !== '') {
-        if (this.tag.trim() === '') {
-          this.tag = 'Без тэга'
+      let trimedtxt = this.txt.trim()
+      let trimedtag = this.tag.trim()
+      if (trimedtxt !== '') {
+        if (trimedtag === '') {
+          trimedtag = 'Без тэга'
         }
-        this.$emit('addtask', { text: this.txt, tag: this.tag })
+        this.$emit('addtask', { text: trimedtxt, tag: trimedtag, done: false })
 
-        this.txt = '';
+        this.txt = ''
         this.tag = ''
       }
     },
@@ -50,11 +53,11 @@ export default {
   border-radius: 15px;
 }
 
-.usertext{
+.text {
   width: 55%;
 }
 
-.tag{
+.tag {
   width: 25%;
 }
 
