@@ -7,7 +7,7 @@
         <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag" />
     </div>
 
-    <div v-for="(t, i) in tasks" :key="i">
+    <div class="taskdiv" v-for="(t, i) in tasks" :key="i">
       <Task :text="t.text" :tag="t.tag" @deltask="deletetask(i)" @checktask="checktask(i)"/>
     </div>
   </div>
