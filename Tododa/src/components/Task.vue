@@ -1,15 +1,21 @@
 <template>
-  <div class="task" :style="{ opacity: this.done ? 0.3 : 1}" >
-    <div class="text" :style="{textDecoration: this.done ? 'line-through' : 'none' }" @click="donetask">
-      <span>{{ text }}</span>
+  <div class="task" :style="{ opacity: this.done ? 0.3 : 1 }">
+
+    <div class="top-content">
+      <div class="text" :style="{ textDecoration: this.done ? 'line-through' : 'none' }" @click="donetask">
+        <span>{{ text }}</span>
+      </div>
     </div>
-    <div class="tag">
-      <span># {{ tag }}</span>
-    </div>
-    <div class="buttons">
-      <button class="delete" type="button" @click="deletetask">
-        <img src="../assets/x.svg" draggable="false" />
-      </button>
+
+    <div class="bottom-content">
+      <div class="tag">
+        <span># {{ tag }}</span>
+      </div>
+      <div class="buttons">
+        <button class="delete" type="button" @click="deletetask">
+          <img src="../assets/x.svg" draggable="false" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +33,10 @@ export default {
       required: true,
     },
 
+    tagcolor: {
+      type: String,
+    },
+
     done: {
       type: Boolean,
       default: false,
@@ -38,7 +48,7 @@ export default {
       this.$emit("deltask");
     },
 
-    donetask(){
+    donetask() {
       this.$emit("donetask");
     }
   },
@@ -47,14 +57,17 @@ export default {
 
 <style scoped>
 .task {
-  margin: 20px 0px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+
   background-color: var(--block-bg);
   border-radius: 15px;
-  padding: 20px;
-  cursor: pointer;
+  padding: 30px;
+  height: calc(100% - 40px);
+
+  position: relative;
 }
 
 .task.done {
@@ -62,38 +75,39 @@ export default {
   text-decoration: line-through;
 }
 
-div{
+div {
   transition: all 0.2s ease;
 }
 
+.top-content {
+  width: 100%;
+}
+
+.bottom-content {
+  width: 100%;
+}
+
 .task .text {
-  margin: 0px 20px;
   text-wrap: wrap;
-  width: 70%;
+  width: 100%;
 }
 
-.text span {
-  width: fit-content;
-}
-
-.task .tag {
-  color: rgba(0, 0, 0, 0.318);
-  margin: 0px 20px;
-  width: 20%;
+.bottom-content .tag span{
   display: flex;
-  justify-content: center;
   text-wrap: nowrap;
+  width: 100%;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .buttons {
-  width: 10%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 button {
-  margin: 0px 10px;
+  width: 100px;
 }
 
 button.delete {

@@ -7,13 +7,14 @@
       <CreateTask @addtask="AddTask" />
     </div>
     <div class="wrapper">
-      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag" />
+      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag"/>
     </div>
 
-    <div v-for="(task, i) in tasks" :key="i">
-      <Task :text="task.text" :tag="task.tag" :done="task.done"
-        @deltask="DelTask(i)" @donetask="DoneTask(i)" />
-
+    <div class="tasks">
+      <div v-for="(task, i) in tasks" :key="i" class="task-container">
+        <Task :text="task.text" :tag="task.tag" :done="task.done" 
+          @deltask="DelTask(i)" @donetask="DoneTask(i)" />
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +57,7 @@ const AddTask = (newtask) => {
   }
   doned.value += newtask.done ? 1 : 0;
   SaveData();
+
 };
 
 const DoneTask = (i) => {
@@ -105,9 +107,17 @@ onUnmounted(() => {
   color: rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (min-width: 980px) {
+.tasks{
+  display: flex;
+  flex-wrap: wrap;
   
 }
+.task-container{
+  width: calc(33.33333% - 80px);
+  height: 320px;
+  margin: 20px 40px;
+}
+
 </style>
 
 
