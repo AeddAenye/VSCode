@@ -7,20 +7,19 @@
       <CreateTask @addtask="AddTask" />
     </div>
     <div class="wrapper">
-      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: tag.color }" :tag="tag.tag"/>
+      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: rgba(tag.r, tag.g, tag.b, i === selectedTagIndex ? 0.7 : 0.3), cursor: 'pointer' }" :tag="tag.tag" @click="filterTasksByTag(i)"/>
     </div>
 
     <div class="tasks">
-      <div v-for="(task, i) in tasks" :key="i" class="task-container">
-        <Task :text="task.text" :tag="task.tag" :done="task.done" 
-          @deltask="DelTask(i)" @donetask="DoneTask(i)" />
+      <div v-for="(task, i) in filteredTasks" :key="i" class="task-container" :style="{ backgroundColor: rgba(task.tag) }">
+        <Task :text="task.text" :tag="task.tag" :done="task.done" @deltask="DelTask(i)" @donetask="DoneTask(i)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import CreateTask from './components/CreateTask.vue';
 import Task from './components/Task.vue';
 import Tag from './components/Tag.vue';
@@ -28,6 +27,7 @@ import Tag from './components/Tag.vue';
 let tasks = ref([]);
 let tags = ref([]);
 let doned = ref(0);
+let selectedTagIndex = ref(null);
 
 onMounted(() => {
   const localtasks = localStorage.getItem('tasks');
@@ -53,7 +53,9 @@ const AddTask = (newtask) => {
   tasks.value.push({ text: newtask.text, tag: newtask.tag, done: newtask.done });
 
   if (!tags.value.find(t => t.tag === newtask.tag)) {
-    tags.value.push({ tag: newtask.tag, color: ChangeColor() });
+    let colors = ChangeColor();
+
+    tags.value.push({ tag: newtask.tag, r: colors.r, g: colors.g, b: colors.b, a: colors.a });
   }
   doned.value += newtask.done ? 1 : 0;
   SaveData();
@@ -77,10 +79,37 @@ const DelTask = (i) => {
   SaveData();
 };
 
+const rgba = (r, g, b, a) => {
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
+};
+
 const ChangeColor = () => {
   const randomColor = () => Math.floor(Math.random() * 256);
-  return `rgba(${randomColor()}, ${randomColor()}, ${randomColor()}, ${0.5})`;
+
+  return {
+    r: randomColor(),
+    g: randomColor(),
+    b: randomColor(),
+    a: 0.3
+  };
 };
+
+const filterTasksByTag = (index) => {
+  if (selectedTagIndex.value === index) {
+    selectedTagIndex.value = null;
+  } else {
+    selectedTagIndex.value = index;
+  }
+};
+
+const filteredTasks = computed(() => {
+  if (selectedTagIndex.value === null) {
+    return tasks.value;
+  } else {
+    const tag = tags.value[selectedTagIndex.value];
+    return tasks.value.filter(task => task.tag === tag.tag);
+  }
+});
 
 onUnmounted(() => {
   SaveData();
@@ -100,24 +129,21 @@ onUnmounted(() => {
   opacity: 0.5;
 }
 
-.counter{
+.counter {
   position: fixed;
   top: 5px;
   left: 5px;
   color: rgba(0, 0, 0, 0.5);
 }
 
-.tasks{
+.tasks {
   display: flex;
   flex-wrap: wrap;
-  
 }
-.task-container{
+
+.task-container {
   width: calc(33.33333% - 80px);
   height: 320px;
   margin: 20px 40px;
 }
-
 </style>
-
-
