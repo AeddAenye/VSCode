@@ -1,19 +1,16 @@
 <template>
   <div>
-    <div class="counter">
-      <span>{{ doned }} / {{ tasks.length }}</span>
-    </div>
-    <div>
-      <CreateTask @addtask="AddTask" />
-    </div>
-    <div class="wrapper">
-      <Tag v-for="(tag, i) in tags" :key="i" :style="{ backgroundColor: rgba(tag.r, tag.g, tag.b, i === selectedTagIndex ? 0.7 : 0.3), cursor: 'pointer' }" :tag="tag.tag" @click="filterTasksByTag(i)"/>
-    </div>
+    <CreateTask @addtask="AddTask" />
+  </div>
+  <div class="wrapper">
+    <Tag v-for="(tag, i) in tags" :key="i"
+      :style="{ backgroundColor: rgba(tag.r, tag.g, tag.b, i === selectedTagIndex ? 0.7 : 0.3), cursor: 'pointer' }"
+      :tag="tag.tag" @click="filterTasksByTag(i)" />
+  </div>
 
-    <div class="tasks">
-      <div v-for="(task, i) in filteredTasks" :key="i" class="task-container" :style="{ backgroundColor: rgba(task.tag) }">
-        <Task :text="task.text" :tag="task.tag" :done="task.done" @deltask="DelTask(i)" @donetask="DoneTask(i)" />
-      </div>
+  <div class="tasks">
+    <div v-for="(task, i) in filteredTasks" :key="i" class="task-container" :style="{ backgroundColor: rgba(task.tag) }">
+      <Task :text="task.text" :tag="task.tag" :done="task.done" @deltask="DelTask(i)" @donetask="DoneTask(i)" />
     </div>
   </div>
 </template>
@@ -121,19 +118,12 @@ onUnmounted(() => {
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
-  margin: 50px;
+  margin: 100px 50px 50px 50px;
 }
 
 .done {
   text-decoration: line-through;
   opacity: 0.5;
-}
-
-.counter {
-  position: fixed;
-  top: 5px;
-  left: 5px;
-  color: rgba(0, 0, 0, 0.5);
 }
 
 .tasks {

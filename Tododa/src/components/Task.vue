@@ -62,11 +62,10 @@ export default {
   align-items: center;
   justify-content: space-between;
 
-  background-color: var(--block-bg);
+  border: 2px solid rgb(203, 203, 203);
   border-radius: 15px;
-  padding: 30px;
+  padding: 40px 20px 20px 20px;
   height: calc(100% - 40px);
-
   position: relative;
 }
 
@@ -96,7 +95,6 @@ div {
   display: flex;
   text-wrap: nowrap;
   width: 100%;
-  margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -106,19 +104,32 @@ div {
   justify-content: center;
 }
 
+button>img {
+  width: 30px;
+  height: 30px;
+}
+
 button {
-  width: 100px;
+  width: 30px;
+  height: 30px;
 }
 
 button.delete {
   background-color: rgb(255, 143, 143);
+  border-radius: 10px;
+  padding: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  transition: background-color 0.2s ease;
 }
 
-.task button.delete:hover {
+button.delete:hover {
   background-color: rgb(240, 55, 55);
 }
 
-.task button.delete:active {
+button.delete:active {
   scale: 0.95;
 }
 </style>

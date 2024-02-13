@@ -49,10 +49,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 0px;
   padding: 20px;
-  background-color: var(--block-bg);
+  background-color: rgb(203, 203, 203);
   border-radius: 15px;
+
+  position: fixed;
+  top: 20px;
+  left: 40px;
+
+  width: calc(100svw - 120px);
+  z-index: 5;
+
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.35);
 }
 
 .text {
@@ -88,18 +96,19 @@ export default {
   margin: 0px 20px;
 }
 
-.fields div{
+.fields div {
   margin: 0px 20px;
   display: flex;
   justify-content: center;
 }
 
 .inputarea button {
-  background-color: rgb(126, 187, 240);
+  background-color: rgb(126, 240, 170);
+  transition: background-color 0.2s ease;
 }
 
 .inputarea button:hover {
-  background-color: rgb(88, 170, 242);
+  background-color: rgb(80, 189, 122);
 }
 
 .inputarea button:active {
