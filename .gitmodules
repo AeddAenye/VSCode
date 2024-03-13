@@ -1,0 +1,3 @@
+[submodule "projects/Cubes"]
+	path = projects/Cubes
+	url = https://github.com/AeddAenye/cubes.git
