@@ -1,0 +1,41 @@
+version: '1'
+
+services:
+  # MySQL service
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # PHP service
+  php:
+    image: php:7.4-apache
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - ./ПАПКА:/var/www/html
+
+  # phpMyAdmin service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "8081:80"
+
+volumes:
+  mysql_data:

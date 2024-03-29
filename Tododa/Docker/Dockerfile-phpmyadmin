@@ -1,0 +1,6 @@
+FROM phpmyadmin:latest
+
+ENV PMA_HOST=db
+ENV MYSQL_ROOT_PASSWORD=RABBIT.inhole20!
+
+EXPOSE 80
