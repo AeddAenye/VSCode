@@ -1,0 +1,93 @@
+[
+    {
+        "number": "S4157595",
+        "status": "В архиве",
+        "price": 200,
+        "created_at": "16.01.2023",
+        "amount": 5
+    },
+    {
+        "number": "S3857573",
+        "status": "В работе",
+        "price": 9678,
+        "created_at": "09.01.2024",
+        "amount": 2
+    },
+    {
+        "number": "S3657591",
+        "status": "В архиве",
+        "price": 1355,
+        "created_at": "01.01.2024",
+        "amount": 6
+    },
+    {
+        "number": "S3457598",
+        "status": "Выполнен",
+        "price": 200,
+        "created_at": "09.01.2024",
+        "amount": 1
+    },
+    {
+        "number": "S3357595",
+        "status": "В работе",
+        "price": 233,
+        "created_at": "09.01.2023",
+        "amount": 6
+    },
+    {
+        "number": "S3257598",
+        "status": "В работе",
+        "price": 2855,
+        "created_at": "09.01.2024",
+        "amount": 3
+    },
+    {
+        "number": "S3157695",
+        "status": "В архиве",
+        "price": 1744,
+        "created_at": "09.01.2023",
+        "amount": 1
+    },
+    {
+        "number": "S3157595",
+        "status": "Выполнен",
+        "price": 3685,
+        "created_at": "09.01.2024",
+        "amount": 3
+    },
+    {
+        "number": "S3157592",
+        "status": "Выполнен",
+        "price": 6584,
+        "created_at": "09.01.2024",
+        "amount": 1
+    },
+    {
+        "number": "S3157564",
+        "status": "В архиве",
+        "price": 6978,
+        "created_at": "09.01.2023",
+        "amount": 4
+    },
+    {
+        "number": "S3157533",
+        "status": "В архиве",
+        "price": 3644,
+        "created_at": "01.04.2023",
+        "amount": 7
+    },
+    {
+        "number": "S3157514",
+        "status": "В архиве",
+        "price": 9722,
+        "created_at": "09.01.2024",
+        "amount": 8
+    },
+    {
+        "number": "S3151522",
+        "status": "В работе",
+        "price": 69858,
+        "created_at": "09.01.2024",
+        "amount": 6
+    }
+]

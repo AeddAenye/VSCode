@@ -1,0 +1,9 @@
+# Используем официальный образ phpMyAdmin
+FROM phpmyadmin/phpmyadmin
+
+# Переменные окружения для настройки phpMyAdmin
+ENV PMA_HOST=db
+ENV MYSQL_ROOT_PASSWORD=RABBIT.inhole20!
+
+# Порт, который мы будем использовать для доступа к phpMyAdmin
+EXPOSE 80

@@ -1,0 +1,44 @@
+{
+    "soft_colors": {
+        "Cotton Candy": {
+            "background": "#FFBCD9",
+            "text-color": "#000000"
+        },
+        "Peachy Keen": {
+            "background": "#FFD8B1",
+            "text-color": "#000000"
+        },
+        "Lilac Love": {
+            "background": "#D0BFFF",
+            "text-color": "#000000"
+        },
+        "Sky Blue": {
+            "background": "#87CEEB",
+            "text-color": "#FFFFFF"
+        },
+        "Minty Fresh": {
+            "background": "#98FF98",
+            "text-color": "#FFFFFF"
+        },
+        "Powdered Peach": {
+            "background": "#FFDDC1",
+            "text-color": "#000000"
+        },
+        "Buttercream": {
+            "background": "#FFFDD0",
+            "text-color": "#000000"
+        },
+        "Periwinkle": {
+            "background": "#CCCCFF",
+            "text-color": "#000000"
+        },
+        "Lavender Lemonade": {
+            "background": "#F9E4B7",
+            "text-color": "#000000"
+        },
+        "Turquoise Mist": {
+            "background": "#F0FFFF",
+            "text-color": "#000000"
+        }
+    }
+}
