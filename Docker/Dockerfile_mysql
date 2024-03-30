@@ -1,9 +1,0 @@
-# Используем официальный образ MySQL 5.7
-FROM mysql:5.7
-
-# Переменные окружения для настройки MySQL
-ENV MYSQL_ROOT_PASSWORD=RABBIT.inhole20!
-ENV MYSQL_DATABASE=db
-
-# Порт, который мы будем использовать для соединения с MySQL
-EXPOSE 3306
